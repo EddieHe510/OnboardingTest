@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnboardingTest.CommonDriver
+namespace OnboardingTest.Utilites
 {
     public class CommonDriver
     {

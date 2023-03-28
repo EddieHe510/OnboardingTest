@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OnboardingTest.Utilites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
 
 namespace OnboardingTest.Pages
 {
@@ -20,42 +22,44 @@ namespace OnboardingTest.Pages
             // Identify the Description textarea and input description
             IWebElement descriptionTextarea = driver.FindElement(By.XPath("//textarea[@name=\"value\"]"));
             descriptionTextarea.Click();
+            descriptionTextarea.Clear();
             descriptionTextarea.SendKeys("I am Eddie, I am a Jazz music true lover!!!");
 
-        }
-        
-            
-        public void AddLanguage(IWebDriver driver)
+            IWebElement saveButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/div/div/form/div/div/div[2]/button"));
+            saveButton.Click();
+
+        }                
+        public void AddLanguage(IWebDriver driver, string language)
         {
-                // Identify the Languages Add New button and add language
-                IWebElement languageAddNewButton = driver.FindElement(By.XPath("//div[@class=\"ui teal button \"]"));
-                languageAddNewButton.Click();
+            // Identify the Languages Add New button and add language
+            IWebElement languageAddNewButton = driver.FindElement(By.XPath("//div[@class=\"ui teal button \"]"));
+            languageAddNewButton.Click();
 
-                IWebElement addLanguageTextBox = driver.FindElement(By.XPath("//input[@name=\"name\"]"));
-                addLanguageTextBox.SendKeys("English");
+            IWebElement addLanguageTextBox = driver.FindElement(By.XPath("//input[@name=\"name\"]"));
+            addLanguageTextBox.SendKeys(language);
 
-                IWebElement languageDropDown = driver.FindElement(By.XPath("//select[@name=\"level\"]"));
-                languageDropDown.Click();
+            IWebElement languageDropDown = driver.FindElement(By.XPath("//select[@name=\"level\"]"));
+            languageDropDown.Click();
 
-                IWebElement fluentOption = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[4]"));
-                fluentOption.Click();
+            IWebElement fluentOption = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[4]"));
+            fluentOption.Click();
 
-                IWebElement languageAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button\"]"));
-                languageAddButton.Click();
+            IWebElement languageAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button\"]"));
+            languageAddButton.Click();
         }
-
-        public void AddSkills(IWebDriver driver)
+        public void AddSkills(IWebDriver driver, string skill)
         {
             // Identify the Skills tag and click on it 
-            IWebElement skillsTag = driver.FindElement(By.XPath("//a[@class=\"item active\"]"));
+            IWebElement skillsTag = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
             skillsTag.Click();
 
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@class=\"ui teal button\"]", 5);
             // Identify the Skill add new button and add skill
             IWebElement skillAddNewButton = driver.FindElement(By.XPath("//div[@class=\"ui teal button\"]"));
             skillAddNewButton.Click();
 
             IWebElement addSkillTextBox = driver.FindElement(By.XPath("//input[@name=\"name\"]"));
-            addSkillTextBox.SendKeys("Piano");
+            addSkillTextBox.SendKeys(skill);
 
             IWebElement skillDropDown = driver.FindElement(By.XPath("//select[@name=\"level\"]"));
             skillDropDown.Click();
@@ -66,20 +70,20 @@ namespace OnboardingTest.Pages
             IWebElement skillSaveButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button \"]"));
             skillSaveButton.Click();
         }
-
-        public void AddEducation(IWebDriver driver)
+        public void AddEducation(IWebDriver driver, string collegename, string degree)
         {
             // Identify the Education tag and click on it
-            IWebElement educationTag = driver.FindElement(By.XPath("//a[@class=\"item active\"]"));
+            IWebElement educationTag = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
             educationTag.Click();
 
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div", 5);
             // Identify the Education add new button and add education
-            IWebElement educationAddNewButton = driver.FindElement(By.XPath("//div[@class=\"ui teal button \"]"));
+            IWebElement educationAddNewButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div"));
             educationAddNewButton.Click();
 
             // college textbox
             IWebElement collegeTextBox = driver.FindElement(By.XPath("//input[@name=\"instituteName\"]"));
-            collegeTextBox.SendKeys("USQ");
+            collegeTextBox.SendKeys(collegename);
 
             // Country dropdown list
             IWebElement countryOfCollege = driver.FindElement(By.XPath("//select[@name=\"country\"]"));
@@ -97,7 +101,7 @@ namespace OnboardingTest.Pages
 
             // degree textbox
             IWebElement degreeTextbox = driver.FindElement(By.XPath("//input[@name=\"degree\"]"));
-            degreeTextbox.SendKeys('Master');
+            degreeTextbox.SendKeys(degree);
 
             // Year of graduat
             IWebElement yearOfGraduat = driver.FindElement(By.XPath("//select[@name=\"yearOfGraduation\"]"));
@@ -110,30 +114,32 @@ namespace OnboardingTest.Pages
             IWebElement educationAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button \"]"));
             educationAddButton.Click();
         }
-
-        public void AddCertifications(IWebDriver driver)
+        public void AddCertifications(IWebDriver driver, string certificate, string certifiedfrom)
         {
             // Identify the Certifications tag and click on it
-            IWebElement certificationsTag = driver.FindElement(By.XPath("//a[@class=\"item active\"]"));
+            IWebElement certificationsTag = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[4]"));
             certificationsTag.Click();
 
-            IWebElement certificationAddNewButton = driver.FindElement(By.XPath("//div[@class=\"ui teal button \"]"));
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div", 5);
+            // Identify the certification add new button click on it and add certificate
+            IWebElement certificationAddNewButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div"));
             certificationAddNewButton.Click();
 
             IWebElement certificationTextBox = driver.FindElement(By.XPath("//input[@name=\"certificationName\"]"));
-            certificationTextBox.SendKeys("Master of Jazz");
+            certificationTextBox.SendKeys(certificate);
 
             IWebElement certifiedFromTextBox = driver.FindElement(By.XPath("//input[@name=\"certificationFrom\"]"));
-            certifiedFromTextBox.SendKeys("GUESS");
+            certifiedFromTextBox.SendKeys(certifiedfrom);
 
             IWebElement yearDropDown = driver.FindElement(By.XPath("//select[@class=\"ui fluid dropdown\"]"));
             yearDropDown.Click();
 
             IWebElement theFirstOption = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[2]/div[2]/select/option[2]"));
             theFirstOption.Click();
-        }
 
-   
-    
+            // Click the add button
+            IWebElement certificationAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button \"]"));
+            certificationAddButton.Click();
+        }  
     }
 }
