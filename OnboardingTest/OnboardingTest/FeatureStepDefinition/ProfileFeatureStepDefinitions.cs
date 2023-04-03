@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using OnboardingTest.Pages;
 using OnboardingTest.Utilites;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using TechTalk.SpecFlow;
@@ -13,6 +14,8 @@ namespace OnboardingTest.FeatureStepDefinition
         JoinPage joinObj = new JoinPage();
         SignInPage signInObj = new SignInPage();
         UserPage userObj = new UserPage();
+        ShareSkillPage shareSkillObj = new ShareSkillPage();
+        SearchActions searchActionsObj = new SearchActions();
 
         [Given(@"I navigated to the Mars website successfully")]
         public void GivenINavigatedToTheMarsWebsiteSuccessfully()
@@ -89,5 +92,42 @@ namespace OnboardingTest.FeatureStepDefinition
             userObj.AddCertifications(driver, certificate, certifiedFrom);
         }
 
+        [Then(@"I click the Share skill button")]
+        public void ThenIClickTheShareSkillButton()
+        {
+            shareSkillObj.ClickShareSkillButton(driver);
+        }
+
+        [Then(@"I completed the Share skill form '([^']*)', '([^']*)', '([^']*)', '([^']*)'")]
+        public void ThenICompletedTheShareSkillForm(string title, string description, string tags, string skillexchange)
+        {
+            shareSkillObj.ShareSkillAction(driver, title, description, tags, skillexchange);
+        }
+
+        [Then(@"My form should be searchable")]
+        public void ThenMyFormShouldBeSearchable()
+        {
+            userObj.SearchMyProfile(driver);
+        }
+
+        [Given(@"I use search bar to search skill '([^']*)'")]
+        public void GivenIUseSearchBarToSearchSkill(string skill)
+        {
+            searchActionsObj.SearchAction(driver, skill);
+        }
+
+        [Given(@"I should be able to see the seller I want and click the seller name")]
+        public void GivenIShouldBeAbleToSeeTheSellerIWantAndClickTheSellerName()
+        {
+            searchActionsObj.VerificationSeller(driver);
+        }
+
+        [Then(@"I should be in the seller profile page")]
+        public void ThenIShouldBeInTheSellerProfilePage()
+        {
+            string varifSellerName = searchActionsObj.VerifiSellerPage(driver);
+            Assert.That(varifSellerName == "Eddie", "Actual seller name and expected seller name do not match.");
+        }
     }
 }
+

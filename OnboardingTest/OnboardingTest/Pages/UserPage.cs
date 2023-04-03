@@ -8,6 +8,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework;
 
 namespace OnboardingTest.Pages
 {
@@ -141,5 +142,29 @@ namespace OnboardingTest.Pages
             IWebElement certificationAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button \"]"));
             certificationAddButton.Click();
         }  
-    }
+        
+        public void SearchMyProfile(IWebDriver driver)
+        {
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"listing-management-section\"]/div[1]/div[1]/input", 5);
+            // Identify the Search skills searchbar and input skill name
+            IWebElement searchSkillsSearchbar = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[1]/div[1]/input"));
+            searchSkillsSearchbar.SendKeys("Jazz");
+
+            IWebElement searchLinkIcon = driver.FindElement(By.XPath("//i[@class=\"search link icon\"]"));
+            searchLinkIcon.Click();
+
+            Wait.WaitToBeVisible(driver, "XPath", "//a[@class=\"seller-info\"]", 5);
+            // Identify the seller name if correct then click on it
+            IWebElement sellerName = driver.FindElement(By.XPath("//a[@class=\"seller-info\"]"));
+            if (sellerName.Text == "Eddie He")
+            {
+                IWebElement clickOnIt = driver.FindElement(By.XPath("//a[@class=\"seller-info\"]"));
+                clickOnIt.Click();
+            }
+            else
+            {
+                Assert.Fail("Actual seller name and expected seller name do not match!");
+            }
+        }
+    }  
 }
