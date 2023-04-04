@@ -13,5 +13,7 @@ namespace OnboardingTest.Utilites
     public class CommonDriver
     {
         public static IWebDriver driver;
+
     }
+
 }

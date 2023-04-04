@@ -13,8 +13,8 @@ And I enter valid '<FirstName>', '<LastName>', '<EmailAddress>', '<Password>', '
 Then The account should be created successfully
 
 Examples: 
-| FirstName | LastName | EmailAddress        | Password | ConfirmPassword |
-| Eddie	    | He       | 4510756456@qq.com    | Eddie123 | Eddie123        |
+| FirstName | LastName | EmailAddress          | Password | ConfirmPassword |
+| Eddie	    | He       | eddie123@gmail.com    | Eddie123 | Eddie123        |
 
 
 Scenario Outline: 02) Sign in Mars with valid details and fill up user profile
@@ -29,8 +29,8 @@ And I add new education '<CollegeName>' '<Degree>'
 And I add new certifications '<Certificate>', '<CertifiedFrom>'
 
 Examples: 
-| Fullname | EmailAddress     | Password | Language | Skill | CollegeName | Degree | Certificate    | CertifiedFrom |
-| Eddie He | 4510756456@qq.com | Eddie123 | English  | Jazz  | USQ         | Master | Master of Jazz | Guess         |
+| Fullname | EmailAddress        | Password | Language | Skill | CollegeName | Degree | Certificate    | CertifiedFrom |
+| Eddie He | eddie123@gmail.com  | Eddie123 | English  | Jazz  | USQ         | Master | Master of Jazz | Guess         |
 
 
 Scenario Outline: 03) Complated the Share skill form and save it
@@ -42,8 +42,8 @@ And I completed the Share skill form '<Title>', '<Description>', '<Tags>', '<Ski
 Then My form should be searchable
 
 Examples: 
-| EmailAddress     | Password | Title     | Description																		    | Tags | Skill-Exchange |
-| 4510756456@qq.com | Eddie123 | Jazz Club | We are true Jazz lover, If you are intrested in Jazz please feel free to join us!! | JAZZ | Photo Skill    |
+| EmailAddress        | Password | Title     | Description																		    | Tags | Skill-Exchange |
+| eddie123@gmail.com  | Eddie123 | Jazz Club | We are true Jazz lover, If you are intrested in Jazz please feel free to join us!! | JAZZ | Photo Skill    |
 
 
 Scenario Outline:   04) The people is able to see seller details when they seeking for some skill
