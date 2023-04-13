@@ -32,8 +32,28 @@ Examples:
 | Fullname | EmailAddress        | Password | Language | Skill | CollegeName | Degree | Certificate    | CertifiedFrom |
 | Eddie He | eddie123@gmail.com  | Eddie123 | English  | Jazz  | USQ         | Master | Master of Jazz | Guess         |
 
+Scenario Outline: 03) Edit the Skills
+Given I navigated to the Mars website successfully
+And I clicked the signin button
+And I enter valid '<EmailAddress>', '<Password>'
+Then I click on the Skills tag and click the pen icon to edit the skill detail '<NewSkill>'
 
-Scenario Outline: 03) Complated the Share skill form and save it
+Examples: 
+| EmailAddress		 | Password      | NewSkill   |
+| eddie123@gmail.com | Eddie123      |   IT       |
+
+Scenario Outline: 04) Delete the Skills
+Given I navigated to the Mars website successfully
+And I clicked the signin button
+And I enter valid '<EmailAddress>', '<Password>'
+Then I click on the Skills tag and delete the first skill
+
+Examples: 
+| EmailAddress		 | Password      |
+| eddie123@gmail.com | Eddie123      |
+
+
+Scenario Outline: 05) Complated the Share skill form and save it
 Given I navigated to the Mars website successfully
 And I clicked the signin button
 And I enter valid '<EmailAddress>', '<Password>'
@@ -44,14 +64,3 @@ Then My form should be searchable
 Examples: 
 | EmailAddress        | Password | Title     | Description																		    | Tags | Skill-Exchange |
 | eddie123@gmail.com  | Eddie123 | Jazz Club | We are true Jazz lover, If you are intrested in Jazz please feel free to join us!! | JAZZ | Photo Skill    |
-
-
-Scenario Outline:   04) The people is able to see seller details when they seeking for some skill
-Given I navigated to the Mars website successfully
-And I use search bar to search skill '<Skill>'
-And I should be able to see the seller I want and click the seller name
-Then I should be in the seller profile page
-
-Examples: 
-| Skill |
-| Jazz  |

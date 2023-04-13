@@ -47,6 +47,8 @@ namespace OnboardingTest.Pages
 
             IWebElement languageAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button\"]"));
             languageAddButton.Click();
+
+            Thread.Sleep(5000);
         }
         public void AddSkills(IWebDriver driver, string skill)
         {
@@ -71,6 +73,46 @@ namespace OnboardingTest.Pages
             IWebElement skillSaveButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button \"]"));
             skillSaveButton.Click();
         }
+        public void EditSkills(IWebDriver driver, string skill)
+        {
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 5);
+            // Identify the Skills tag and click on it 
+            IWebElement skillsTag = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
+            skillsTag.Click();
+
+            // Identify the first Skill and click the pen icon
+            IWebElement editicon = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[3]/span[1]/i"));
+            editicon.Click();
+
+            Wait.WaitToBeVisible(driver, "Name", "name", 5);
+            // Identify the skill name textbox clear it and input new skill name
+            IWebElement skilltextbox = driver.FindElement(By.Name("name"));
+            skilltextbox.Clear();
+            skilltextbox.SendKeys(skill);
+
+            // Identify the Update button and click on it
+            IWebElement updateButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button\"]"));
+            updateButton.Click();
+
+            Thread.Sleep(5000);
+        }
+
+        public void DeleteSkills(IWebDriver driver)
+        {
+            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 5);
+            // Identify the Skills tag and click on it 
+            IWebElement skillsTag = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
+            skillsTag.Click();
+
+            // Identify the first skill and delete
+            IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[1]/tr/td[3]/span[2]/i"));
+            deleteButton.Click();
+
+            Thread.Sleep(5000);
+        }
+
+
+
         public void AddEducation(IWebDriver driver, string collegename, string degree)
         {
             // Identify the Education tag and click on it
@@ -114,6 +156,8 @@ namespace OnboardingTest.Pages
             // Click the add button
             IWebElement educationAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button \"]"));
             educationAddButton.Click();
+
+            Thread.Sleep(5000);
         }
         public void AddCertifications(IWebDriver driver, string certificate, string certifiedfrom)
         {
@@ -141,6 +185,8 @@ namespace OnboardingTest.Pages
             // Click the add button
             IWebElement certificationAddButton = driver.FindElement(By.XPath("//input[@class=\"ui teal button \"]"));
             certificationAddButton.Click();
+
+            Thread.Sleep(5000);
         }  
         
         public void SearchMyProfile(IWebDriver driver)

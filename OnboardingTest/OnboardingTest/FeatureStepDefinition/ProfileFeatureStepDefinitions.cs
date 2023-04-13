@@ -15,7 +15,6 @@ namespace OnboardingTest.FeatureStepDefinition
         SignInPage signInObj = new SignInPage();
         UserPage userObj = new UserPage();
         ShareSkillPage shareSkillObj = new ShareSkillPage();
-        SearchActions searchActionsObj = new SearchActions();
 
         [Given(@"I navigated to the Mars website successfully")]
         public void GivenINavigatedToTheMarsWebsiteSuccessfully()
@@ -92,6 +91,19 @@ namespace OnboardingTest.FeatureStepDefinition
             userObj.AddCertifications(driver, certificate, certifiedFrom);
         }
 
+        [Then(@"I click on the Skills tag and click the pen icon to edit the skill detail '([^']*)'")]
+        public void ThenIClickOnTheSkillsTagAndClickThePenIconToEditTheSkillDetail(string newskill)
+        {
+            userObj.EditSkills(driver, newskill);
+        }
+
+        [Then(@"I click on the Skills tag and delete the first skill")]
+        public void ThenIClickOnTheSkillsTagAndDeleteTheFirstSkill()
+        {
+            userObj.DeleteSkills(driver);
+        }
+
+
         [Then(@"I click the Share skill button")]
         public void ThenIClickTheShareSkillButton()
         {
@@ -109,25 +121,5 @@ namespace OnboardingTest.FeatureStepDefinition
         {
             userObj.SearchMyProfile(driver);
         }
-
-        [Given(@"I use search bar to search skill '([^']*)'")]
-        public void GivenIUseSearchBarToSearchSkill(string skill)
-        {
-            searchActionsObj.SearchAction(driver, skill);
-        }
-
-        [Given(@"I should be able to see the seller I want and click the seller name")]
-        public void GivenIShouldBeAbleToSeeTheSellerIWantAndClickTheSellerName()
-        {
-            searchActionsObj.VerificationSeller(driver);
-        }
-
-        [Then(@"I should be in the seller profile page")]
-        public void ThenIShouldBeInTheSellerProfilePage()
-        {
-            string varifSellerName = searchActionsObj.VerifiSellerPage(driver);
-            Assert.That(varifSellerName == "Eddie", "Actual seller name and expected seller name do not match.");
-        }
     }
 }
-

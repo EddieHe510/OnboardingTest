@@ -78,7 +78,7 @@ namespace OnboardingTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("01) Register Mars with vaild details")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("Eddie", "He", "4510756456@qq.com", "Eddie123", "Eddie123", null)]
+        [NUnit.Framework.TestCaseAttribute("Eddie", "He", "eddie123@gmail.com", "Eddie123", "Eddie123", null)]
         public void _01RegisterMarsWithVaildDetails(string firstName, string lastName, string emailAddress, string password, string confirmPassword, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -123,7 +123,7 @@ testRunner.Then("The account should be created successfully", ((string)(null)), 
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("02) Sign in Mars with valid details and fill up user profile")]
-        [NUnit.Framework.TestCaseAttribute("Eddie He", "4510756456@qq.com", "Eddie123", "English", "Jazz", "USQ", "Master", "Master of Jazz", "Guess", null)]
+        [NUnit.Framework.TestCaseAttribute("Eddie He", "eddie123@gmail.com", "Eddie123", "English", "Jazz", "USQ", "Master", "Master of Jazz", "Guess", null)]
         public void _02SignInMarsWithValidDetailsAndFillUpUserProfile(string fullname, string emailAddress, string password, string language, string skill, string collegeName, string degree, string certificate, string certifiedFrom, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -180,10 +180,83 @@ testRunner.And(string.Format("I add new certifications \'{0}\', \'{1}\'", certif
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("03) Complated the Share skill form and save it")]
-        [NUnit.Framework.TestCaseAttribute("4510756456@qq.com", "Eddie123", "Jazz Club", "We are true Jazz lover, If you are intrested in Jazz please feel free to join us!" +
+        [NUnit.Framework.DescriptionAttribute("03) Edit the Skills")]
+        [NUnit.Framework.TestCaseAttribute("eddie123@gmail.com", "Eddie123", "IT", null)]
+        public void _03EditTheSkills(string emailAddress, string password, string newSkill, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("EmailAddress", emailAddress);
+            argumentsOfScenario.Add("Password", password);
+            argumentsOfScenario.Add("NewSkill", newSkill);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03) Edit the Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 35
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 36
+testRunner.Given("I navigated to the Mars website successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 37
+testRunner.And("I clicked the signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 38
+testRunner.And(string.Format("I enter valid \'{0}\', \'{1}\'", emailAddress, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 39
+testRunner.Then(string.Format("I click on the Skills tag and click the pen icon to edit the skill detail \'{0}\'", newSkill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("04) Delete the Skills")]
+        [NUnit.Framework.TestCaseAttribute("eddie123@gmail.com", "Eddie123", null)]
+        public void _04DeleteTheSkills(string emailAddress, string password, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("EmailAddress", emailAddress);
+            argumentsOfScenario.Add("Password", password);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04) Delete the Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 45
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 46
+testRunner.Given("I navigated to the Mars website successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 47
+testRunner.And("I clicked the signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 48
+testRunner.And(string.Format("I enter valid \'{0}\', \'{1}\'", emailAddress, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 49
+testRunner.Then("I click on the Skills tag and delete the first skill", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("05) Complated the Share skill form and save it")]
+        [NUnit.Framework.TestCaseAttribute("eddie123@gmail.com", "Eddie123", "Jazz Club", "We are true Jazz lover, If you are intrested in Jazz please feel free to join us!" +
             "!", "JAZZ", "Photo Skill", null)]
-        public void _03ComplatedTheShareSkillFormAndSaveIt(string emailAddress, string password, string title, string description, string tags, string skill_Exchange, string[] exampleTags)
+        public void _05ComplatedTheShareSkillFormAndSaveIt(string emailAddress, string password, string title, string description, string tags, string skill_Exchange, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -193,8 +266,8 @@ testRunner.And(string.Format("I add new certifications \'{0}\', \'{1}\'", certif
             argumentsOfScenario.Add("Description", description);
             argumentsOfScenario.Add("Tags", tags);
             argumentsOfScenario.Add("Skill-Exchange", skill_Exchange);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03) Complated the Share skill form and save it", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 36
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05) Complated the Share skill form and save it", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 56
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -204,58 +277,23 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 37
+#line 57
 testRunner.Given("I navigated to the Mars website successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 38
+#line 58
 testRunner.And("I clicked the signin button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 39
+#line 59
 testRunner.And(string.Format("I enter valid \'{0}\', \'{1}\'", emailAddress, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 40
+#line 60
 testRunner.Then("I click the Share skill button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 41
+#line 61
 testRunner.And(string.Format("I completed the Share skill form \'{0}\', \'{1}\', \'{2}\', \'{3}\'", title, description, tags, skill_Exchange), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 42
+#line 62
 testRunner.Then("My form should be searchable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("04) The people is able to see seller details when they seeking for some skill")]
-        [NUnit.Framework.TestCaseAttribute("Jazz", null)]
-        public void _04ThePeopleIsAbleToSeeSellerDetailsWhenTheySeekingForSomeSkill(string skill, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Skill", skill);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04) The people is able to see seller details when they seeking for some skill", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 49
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 50
-testRunner.Given("I navigated to the Mars website successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 51
-testRunner.And(string.Format("I use search bar to search skill \'{0}\'", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 52
-testRunner.And("I should be able to see the seller I want and click the seller name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 53
-testRunner.Then("I should be in the seller profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
