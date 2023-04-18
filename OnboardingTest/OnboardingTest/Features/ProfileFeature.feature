@@ -13,8 +13,8 @@ And I enter valid '<FirstName>', '<LastName>', '<EmailAddress>', '<Password>', '
 Then The account should be created successfully
 
 Examples: 
-| FirstName | LastName | EmailAddress          | Password | ConfirmPassword |
-| Eddie	    | He       | eddie123@gmail.com    | Eddie123 | Eddie123        |
+| FirstName | LastName | EmailAddress          | Password  | ConfirmPassword |
+| Eddie	    | He       | eddie0309@gmail.com    | Eddie123 | Eddie123        |
 
 
 Scenario Outline: 02) Sign in Mars with valid details and fill up user profile
@@ -29,8 +29,8 @@ And I add new education '<CollegeName>' '<Degree>'
 And I add new certifications '<Certificate>', '<CertifiedFrom>'
 
 Examples: 
-| Fullname | EmailAddress        | Password | Language | Skill | CollegeName | Degree | Certificate    | CertifiedFrom |
-| Eddie He | eddie123@gmail.com  | Eddie123 | English  | Jazz  | USQ         | Master | Master of Jazz | Guess         |
+| Fullname | EmailAddress         | Password | Language | Skill | CollegeName | Degree | Certificate    | CertifiedFrom |
+| Eddie He | eddie0309@gmail.com  | Eddie123 | English  | Jazz  | USQ         | Master | Master of Jazz | Guess         |
 
 Scenario Outline: 03) Edit the Skills
 Given I navigated to the Mars website successfully
@@ -39,8 +39,8 @@ And I enter valid '<EmailAddress>', '<Password>'
 Then I click on the Skills tag and click the pen icon to edit the skill detail '<NewSkill>'
 
 Examples: 
-| EmailAddress		 | Password      | NewSkill   |
-| eddie123@gmail.com | Eddie123      |   IT       |
+| EmailAddress		  | Password      | NewSkill   |
+| eddie0309@gmail.com | Eddie123      |   IT       |
 
 Scenario Outline: 04) Delete the Skills
 Given I navigated to the Mars website successfully
@@ -49,8 +49,8 @@ And I enter valid '<EmailAddress>', '<Password>'
 Then I click on the Skills tag and delete the first skill
 
 Examples: 
-| EmailAddress		 | Password      |
-| eddie123@gmail.com | Eddie123      |
+| EmailAddress		  | Password      |
+| eddie0309@gmail.com | Eddie123      |
 
 
 Scenario Outline: 05) Complated the Share skill form and save it
@@ -62,5 +62,5 @@ And I completed the Share skill form '<Title>', '<Description>', '<Tags>', '<Ski
 Then My form should be searchable
 
 Examples: 
-| EmailAddress        | Password | Title     | Description																		    | Tags | Skill-Exchange |
-| eddie123@gmail.com  | Eddie123 | Jazz Club | We are true Jazz lover, If you are intrested in Jazz please feel free to join us!! | JAZZ | Photo Skill    |
+| EmailAddress         | Password | Title     | Description																		    | Tags | Skill-Exchange |
+| eddie0309@gmail.com  | Eddie123 | Jazz Club | We are true Jazz lover, If you are intrested in Jazz please feel free to join us!!  | JAZZ | Photo Skill    |

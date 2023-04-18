@@ -78,7 +78,7 @@ namespace OnboardingTest.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("01) Register Mars with vaild details")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("Eddie", "He", "eddie123@gmail.com", "Eddie123", "Eddie123", null)]
+        [NUnit.Framework.TestCaseAttribute("Eddie", "He", "eddie0510@gmail.com", "Eddie123", "Eddie123", null)]
         public void _01RegisterMarsWithVaildDetails(string firstName, string lastName, string emailAddress, string password, string confirmPassword, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -123,7 +123,7 @@ testRunner.Then("The account should be created successfully", ((string)(null)), 
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("02) Sign in Mars with valid details and fill up user profile")]
-        [NUnit.Framework.TestCaseAttribute("Eddie He", "eddie123@gmail.com", "Eddie123", "English", "Jazz", "USQ", "Master", "Master of Jazz", "Guess", null)]
+        [NUnit.Framework.TestCaseAttribute("Eddie He", "eddie0510@gmail.com", "Eddie123", "English", "Jazz", "USQ", "Master", "Master of Jazz", "Guess", null)]
         public void _02SignInMarsWithValidDetailsAndFillUpUserProfile(string fullname, string emailAddress, string password, string language, string skill, string collegeName, string degree, string certificate, string certifiedFrom, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -181,7 +181,7 @@ testRunner.And(string.Format("I add new certifications \'{0}\', \'{1}\'", certif
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("03) Edit the Skills")]
-        [NUnit.Framework.TestCaseAttribute("eddie123@gmail.com", "Eddie123", "IT", null)]
+        [NUnit.Framework.TestCaseAttribute("eddie0510@gmail.com", "Eddie123", "IT", null)]
         public void _03EditTheSkills(string emailAddress, string password, string newSkill, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -218,7 +218,7 @@ testRunner.Then(string.Format("I click on the Skills tag and click the pen icon 
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("04) Delete the Skills")]
-        [NUnit.Framework.TestCaseAttribute("eddie123@gmail.com", "Eddie123", null)]
+        [NUnit.Framework.TestCaseAttribute("eddie0510@gmail.com", "Eddie123", null)]
         public void _04DeleteTheSkills(string emailAddress, string password, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -254,7 +254,7 @@ testRunner.Then("I click on the Skills tag and delete the first skill", ((string
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("05) Complated the Share skill form and save it")]
-        [NUnit.Framework.TestCaseAttribute("eddie123@gmail.com", "Eddie123", "Jazz Club", "We are true Jazz lover, If you are intrested in Jazz please feel free to join us!" +
+        [NUnit.Framework.TestCaseAttribute("eddie0510@gmail.com", "Eddie123", "Jazz Club", "We are true Jazz lover, If you are intrested in Jazz please feel free to join us!" +
             "!", "JAZZ", "Photo Skill", null)]
         public void _05ComplatedTheShareSkillFormAndSaveIt(string emailAddress, string password, string title, string description, string tags, string skill_Exchange, string[] exampleTags)
         {
